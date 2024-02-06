@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Mi Biblioteca Musical</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="UsuarioLogin">Usuario</string>
+    <string name="ContrasenyaLogin">Contraseña</string>
+    <string name="Login">Login</string>
+    <string name="Registrarse">Registrarse</string>
+    <string name="loginTexto">Login to Jaumefy</string>
 </resources>

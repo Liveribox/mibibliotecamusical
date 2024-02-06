@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_theme_light_primaryContainer"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/titleLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/loginTexto"
+        android:textStyle="bold"
+        android:textColor="@color/md_theme_light_shadow"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="@dimen/textoTitulo"
+        android:layout_marginTop="40dp"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ilUserLogin"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:hint="@string/UsuarioLogin"
+        app:layout_constraintTop_toBottomOf="@id/titleLogin"
+        app:layout_constraintStart_toStartOf="@id/titleLogin"
+        app:layout_constraintEnd_toEndOf="@id/titleLogin">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etUserLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textUri"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ilPasswordLogin"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_padding_default"
+        android:hint="@string/ContrasenyaLogin"
+        app:layout_constraintTop_toBottomOf="@id/ilUserLogin"
+        app:layout_constraintStart_toStartOf="@id/ilUserLogin"
+        app:layout_constraintEnd_toEndOf="@id/ilUserLogin">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPasswordLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Login"
+        app:layout_constraintTop_toBottomOf="@id/ilPasswordLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+    </com.google.android.material.button.MaterialButton>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Registrarse"
+        android:layout_marginTop="@dimen/common_padding_default"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+    </com.google.android.material.button.MaterialButton>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
