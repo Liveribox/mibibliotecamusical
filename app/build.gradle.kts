@@ -76,4 +76,3 @@ dependencies {
 
     // Lifecycle Runtime
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleruntimektxVersion")
-}
