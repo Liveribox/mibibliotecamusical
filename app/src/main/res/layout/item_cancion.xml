@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <ImageView
+        android:id="@+id/imagePhoto"
+        android:layout_width="@dimen/imagen_dimension"
+        android:layout_height="@dimen/imagen_dimension"
+        android:contentDescription="@string/description_image_photo"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+ />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/imagen_dimension"
+        android:background="@color/md_theme_light_primaryContainer"
+        android:textAppearance="?attr/textAppearanceBody2"
+        android:maxLines="1"
+        android:padding="@dimen/common_margin_min"
+        tools:text="Título de la canción"
+        android:gravity="center"
+        android:textSize="@dimen/text_title_cancion"
+        app:layout_constraintStart_toEndOf="@id/imagePhoto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/md_theme_dark_scrim"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,5 +17,16 @@ class FindFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_find, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        // llamas a setupRecyclerView()
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
+        // despues del setup llamas a la funcion de corrutina que te carga los datos
+        // en recycler
+
+    }
 }
