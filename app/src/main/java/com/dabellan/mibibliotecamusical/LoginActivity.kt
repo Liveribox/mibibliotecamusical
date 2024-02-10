@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.dabellan.mibibliotecamusical.databinding.ActivityLoginBinding
 import com.dabellan.mibibliotecamusical.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -68,14 +69,16 @@ class LoginActivity : AppCompatActivity() {
     private fun checkUser(users: MutableList<User>, user: String, password: String) {
         for (userr in users) {
             if (userr.username == user) {
-                Log.i("Usuario Encontado","$user")
+                Log.i("Usuario Encontrado","$user")
                 //intent a main
                 if(userr.password == password){
-                    Log.i("Constraseña Encontada","$password")
+                    Log.i("Constraseña Encontrada","$password")
                 }
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             }
             else{
-                Log.i("Usuario no encontrado","XD")
+                Snackbar.make(mBinding.root,"Usuario Incorrecto",Snackbar.LENGTH_SHORT).show()
             }
 
         }
