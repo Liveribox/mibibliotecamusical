@@ -5,6 +5,8 @@ object Constants {
 
     const val USERS_PATH = "/usuarios"
 
-    const val CANCIONES = "/canciones"
+    const val USER_EMAIL_PATH = "/usuarioEmail/{email}"
+
+    const val CANCIONES_PATH = "/canciones"
 
 }
