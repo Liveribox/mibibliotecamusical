@@ -27,6 +27,11 @@ class LoginActivity : AppCompatActivity() {
         mBinding.btnLogin.setOnClickListener {
             login()
         }
+
+        mBinding.btnRegister.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun login(){
@@ -47,19 +52,16 @@ class LoginActivity : AppCompatActivity() {
 
                 withContext(Dispatchers.Main) {
                     checkUser(users, user, password)
-
                 }
 
             } catch (e: Exception) {
                 (e as? HttpException)?.let {
                     when(it!!.code()) {
                         400 -> {
-                            //updateUI(getString(R.string.main_error_server))
-                            Toast.makeText(this@LoginActivity,"Error",Toast.LENGTH_SHORT)
+                            Snackbar.make(mBinding.root,"Error",Snackbar.LENGTH_SHORT).show()
                         }
                         else ->
-                            //updateUI(getString(R.string.main_error_response))
-                            Toast.makeText(this@LoginActivity,"Error",Toast.LENGTH_SHORT)
+                            Snackbar.make(mBinding.root,"Error",Snackbar.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -70,7 +72,7 @@ class LoginActivity : AppCompatActivity() {
         for (userr in users) {
             if (userr.username == user) {
                 Log.i("Usuario Encontrado","$user")
-                //intent a main
+
                 if(userr.password == password){
                     Log.i("Constraseña Encontrada","$password")
                 }
