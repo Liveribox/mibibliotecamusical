@@ -1,5 +1,6 @@
 package com.dabellan.mibibliotecamusical
 
+import java.time.LocalDateTime
 import java.util.Date
 
 data class User (
@@ -9,6 +10,6 @@ data class User (
     var email: String,
     var genero: String?,
     var pais: String?,
-    var fechaNacimiento: Date,
+    var fechaNacimiento: LocalDateTime,
     var codigoPostal: String?
 )

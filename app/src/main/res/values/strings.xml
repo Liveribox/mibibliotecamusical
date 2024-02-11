@@ -11,4 +11,9 @@
     <string name="home">Home</string>
     <string name="find">Find</string>
     <string name="library">Library</string>
+    <string name="RegistertoJaumefy">Register to Jaumefy</string>
+    <string name="UsuarioRegister">Usuario</string>
+    <string name="EmailRegister">Email</string>
+    <string name="DateRegister">Fecha nacimiento</string>
+    <string name="CrearUsuario">Crear Usuario</string>
 </resources>
