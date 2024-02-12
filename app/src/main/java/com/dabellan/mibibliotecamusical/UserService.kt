@@ -10,8 +10,8 @@ interface UserService {
     @GET(Constants.USERS_PATH)
     suspend fun getUsuarios(): Response<MutableList<User>>
 
-    @GET(Constants.USER_ID_PATH)
-    suspend fun obtenerUsuarioPorEmail(@Path("id") id: Long): Response<User>
+    @GET(Constants.USER_EMAIL_PATH)
+    suspend fun obtenerUsuarioPorEmail(@Path("email") email: String): Response<User>
 
     @POST(Constants.USERS_PATH)
     suspend fun crearUsuario(@Body usuario: User): User

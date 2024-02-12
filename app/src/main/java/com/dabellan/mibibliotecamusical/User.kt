@@ -4,12 +4,11 @@ import java.time.LocalDateTime
 import java.util.Date
 
 data class User (
-    //var id: Long,
+    var id: Long = 0,
     var username: String,
     var password: String,
     var email: String,
-    var genero: String?,
-    var pais: String?,
-    var fechaNacimiento: LocalDateTime,
-    var codigoPostal: String?
-)
+    var genero: String,
+    var pais: String,
+    //var fechaNacimiento: LocalDateTime,
+    var codigoPostal: String)

@@ -47,7 +47,7 @@ class RegisterActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             try {
-                val result = service.obtenerUsuarioPorEmail(1)
+                val result = service.obtenerUsuarioPorEmail(email)
                 val usuario = result.body()
 
                 if (usuario != null) {
@@ -73,13 +73,11 @@ class RegisterActivity : AppCompatActivity() {
                 (e as? HttpException)?.let {
                     when (it!!.code()) {
                         400 -> {
-                            //updateUI(getString(R.string.main_error_server))
                             Snackbar.make(mBinding.root, "No existe usuario", Snackbar.LENGTH_SHORT)
                                 .show()
                         }
 
                         else ->
-                            //updateUI(getString(R.string.main_error_response))
                             Snackbar.make(mBinding.root, "No existe usuario", Snackbar.LENGTH_SHORT)
                                 .show()
                     }
