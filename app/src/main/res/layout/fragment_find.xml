@@ -6,10 +6,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".FindFragment">
 
+    <TextView
+        android:id="@+id/busqueda"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="generic"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/recyclerView"
+        >
+
+    </TextView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         tools:listitem="@layout/item_cancion"
         app:layout_constraintStart_toStartOf="parent"
