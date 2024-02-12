@@ -76,6 +76,7 @@ class LoginActivity : AppCompatActivity() {
                 if(userr.password == password){
                     Log.i("Constraseña Encontrada","$password")
                 }
+                Log.i("ID Usu","${userr.id}")
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
