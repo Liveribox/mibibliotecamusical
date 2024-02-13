@@ -19,6 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class HomeFragment : Fragment(), OnClickListener {
     private lateinit var mBinding: FragmentHomeBinding
     private lateinit var mPlaylistAdapter: PlaylistListAdapter
+    private lateinit var mPodcastAdapter: PodcastListAdapter
     private lateinit var mLinearLayout: LinearLayoutManager
 
 
@@ -48,18 +49,18 @@ class HomeFragment : Fragment(), OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // llamas a setupRecyclerView()
-        setupRecyclerView()
+        setupRecyclerViewPlaylist()
+        setupRecyclerViewPodcast()
     }
 
-    private fun setupRecyclerView() {
-        // despues del setup llamas a la funcion de corrutina que te carga los datos
-        // en recycler
+    //Obtener el recycler view de playlists
+
+    private fun setupRecyclerViewPlaylist() {
 
         mPlaylistAdapter = PlaylistListAdapter(this@HomeFragment)
         mLinearLayout = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false)
 
-        mBinding.recyclerView.apply {
+        mBinding.recyclerViewPlaylist.apply {
             setHasFixedSize(true)
             layoutManager = mLinearLayout
             adapter = mPlaylistAdapter
@@ -84,6 +85,55 @@ class HomeFragment : Fragment(), OnClickListener {
                 val result = service.getPlaylistUsuario(id)
                 val playlist = result.body()!!
                 mPlaylistAdapter.submitList(playlist)
+
+            } catch (e: Exception) {
+
+                (e as? HttpException)?.let {
+                    when(it!!.code()) {
+                        400 -> {
+                            Snackbar.make(mBinding.root,"Error 400", Snackbar.LENGTH_SHORT).show()
+                        }
+                        else ->
+
+                            Snackbar.make(mBinding.root,"Error general",Snackbar.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
+
+    //Obtener la recycler view de los podcast
+
+    private fun setupRecyclerViewPodcast() {
+
+        mPodcastAdapter = PodcastListAdapter(this@HomeFragment)
+        mLinearLayout = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false)
+
+        mBinding.recyclerViewPodcast.apply {
+            setHasFixedSize(true)
+            layoutManager = mLinearLayout
+            adapter = mPodcastAdapter
+        }
+
+        val value = arguments?.getString("idUser")
+
+        getPodcastsUsuario(value!!.toLong())
+
+    }
+
+    private fun getPodcastsUsuario(id: Long){
+        val retrofit = Retrofit.Builder()
+            .baseUrl(Constants.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val service = retrofit.create(PodcastService::class.java)
+
+        lifecycleScope.launch {
+            try {
+                val result = service.getPodcastUsuario(id)
+                val podcast = result.body()!!
+                mPodcastAdapter.submitList(podcast)
 
             } catch (e: Exception) {
 
