@@ -5,24 +5,106 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.dabellan.mibibliotecamusical.databinding.FragmentFindBinding
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dabellan.mibibliotecamusical.databinding.FragmentHomeBinding
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.launch
+import retrofit2.HttpException
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 
-class HomeFragment : Fragment() {
-    private var _binding: FragmentHomeBinding? = null
-    private val mBinding get() = _binding!!
+class HomeFragment : Fragment(), OnClickListener {
+    private lateinit var mBinding: FragmentHomeBinding
+    private lateinit var mPlaylistAdapter: PlaylistListAdapter
+    private lateinit var mLinearLayout: LinearLayoutManager
+
+
+    companion object {
+        fun newInstance(value: String): HomeFragment {
+            val fragment = HomeFragment()
+            val args = Bundle()
+            args.putString("idUser", value)
+            fragment.arguments = args
+            return fragment
+        }
+    }
 
     
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val view = mBinding.root
+        mBinding=FragmentHomeBinding.inflate(inflater, container, false)
+        return mBinding.root
+
+        //val value = arguments?.getString("idUser")
 
 
-        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // llamas a setupRecyclerView()
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
+        // despues del setup llamas a la funcion de corrutina que te carga los datos
+        // en recycler
+
+        mPlaylistAdapter = PlaylistListAdapter(this@HomeFragment)
+        mLinearLayout = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false)
+
+        mBinding.recyclerView.apply {
+            setHasFixedSize(true)
+            layoutManager = mLinearLayout
+            adapter = mPlaylistAdapter
+        }
+
+        val value = arguments?.getString("idUser")
+
+        getPlaylistsUsuario(value!!.toLong())
+
+    }
+
+    private fun getPlaylistsUsuario(id: Long){
+        val retrofit = Retrofit.Builder()
+            .baseUrl(Constants.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val service = retrofit.create(PlaylistService::class.java)
+
+        lifecycleScope.launch {
+            try {
+                val result = service.getPlaylistUsuario(id)
+                val playlist = result.body()!!
+                mPlaylistAdapter.submitList(playlist)
+
+            } catch (e: Exception) {
+
+                (e as? HttpException)?.let {
+                    when(it!!.code()) {
+                        400 -> {
+                            Snackbar.make(mBinding.root,"Error 400", Snackbar.LENGTH_SHORT).show()
+                        }
+                        else ->
+
+                            Snackbar.make(mBinding.root,"Error general",Snackbar.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    override fun onClickCancion(cancionEntity: Cancion) {
+        TODO("Not yet implemented")
     }
 
 }
