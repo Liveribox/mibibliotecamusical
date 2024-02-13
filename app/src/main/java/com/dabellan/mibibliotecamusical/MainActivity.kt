@@ -24,17 +24,23 @@ class MainActivity : AppCompatActivity() {
         //setContentView(R.layout.activity_main)
         //setupRecyclerView()
 
+        val value = intent.getStringExtra("idUser")
+        val homeFragment = HomeFragment.newInstance(value!!)
+
         initcomponents()
         initListeners()
-        replaceFragment(HomeFragment())
+        replaceFragment(homeFragment)
 
     }
 
     private fun initListeners() {
+        val value = intent.getStringExtra("idUser")
+        val homeFragment = HomeFragment.newInstance(value!!)
+
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.bottom_home -> {
-                    replaceFragment(HomeFragment())
+                    replaceFragment(homeFragment)
                     true
                 }
 

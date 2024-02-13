@@ -75,11 +75,15 @@ class LoginActivity : AppCompatActivity() {
 
                 if(userr.password == password){
                     Log.i("Constraseña Encontrada","$password")
+
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("idUser", userr.id.toString())
+                    startActivity(intent)
                 }
-                Log.i("ID Usu","${userr.id}")
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            }
+                }
+
+
+
             else{
                 Snackbar.make(mBinding.root,"Usuario Incorrecto",Snackbar.LENGTH_SHORT).show()
             }
