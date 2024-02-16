@@ -9,7 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dabellan.mibibliotecamusical.Constants.Constants
 import com.dabellan.mibibliotecamusical.Entities.Cancion
-import com.dabellan.mibibliotecamusical.Services.AlbumServic
+import com.dabellan.mibibliotecamusical.Services.AlbumService
 import com.dabellan.mibibliotecamusical.Entities.Playlist
 import com.dabellan.mibibliotecamusical.Services.PlaylistService
 import com.dabellan.mibibliotecamusical.Services.PodcastService
