@@ -16,4 +16,6 @@
     <string name="EmailRegister">Email</string>
     <string name="DateRegister">Fecha nacimiento</string>
     <string name="CrearUsuario">Crear Usuario</string>
+    <string name="nombreAlbum">Nombre album</string>
+    <string name="playlistName">Nombre playlist</string>
 </resources>
