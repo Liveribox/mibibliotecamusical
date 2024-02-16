@@ -27,15 +27,18 @@ class MainActivity : AppCompatActivity() {
         val value = intent.getStringExtra("idUser")
         val homeFragment = HomeFragment.newInstance(value!!)
 
+
         initcomponents()
         initListeners()
         replaceFragment(homeFragment)
+
 
     }
 
     private fun initListeners() {
         val value = intent.getStringExtra("idUser")
         val homeFragment = HomeFragment.newInstance(value!!)
+        val libraryFragment = LibraryFragment.newInstance(value!!)
 
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -50,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.bottom_library -> {
-                    replaceFragment(LibraryFragment())
+                    replaceFragment(libraryFragment)
                     true
                 }
 
