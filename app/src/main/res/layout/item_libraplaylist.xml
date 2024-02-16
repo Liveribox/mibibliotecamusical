@@ -7,28 +7,28 @@
     >
 
     <ImageView
-        android:id="@+id/imagePhoto"
+        android:id="@+id/playImagePhoto"
         android:layout_width="@dimen/imagen_dimension"
         android:layout_height="@dimen/imagen_dimension"
         android:contentDescription="@string/description_image_photo"
-        android:background="@color/md_theme_light_secondary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_musical_note"
- />
+        android:background="@color/md_theme_light_secondary"
+        android:src="@drawable/ic_library"
+        />
 
     <TextView
-        android:id="@+id/tvName"
+        android:id="@+id/tvPlayName"
         android:layout_width="0dp"
         android:layout_height="@dimen/imagen_dimension"
         android:background="@color/md_theme_light_primaryContainer"
         android:textAppearance="?attr/textAppearanceBody2"
         android:maxLines="1"
         android:padding="@dimen/common_margin_min"
-        tools:text="Título de la canción"
+        tools:text="Título de la playlist"
         android:gravity="center"
         android:textSize="@dimen/text_title_cancion"
-        app:layout_constraintStart_toEndOf="@id/imagePhoto"
+        app:layout_constraintStart_toEndOf="@id/playImagePhoto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/md_theme_dark_scrim"
-        app:layout_constraintTop_toBottomOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/tvPlayName"
         />
 
 

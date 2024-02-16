@@ -9,7 +9,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dabellan.mibibliotecamusical.Constants.Constants
 import com.dabellan.mibibliotecamusical.Entities.Cancion
-import com.dabellan.mibibliotecamusical.Services.AlbumService
+import com.dabellan.mibibliotecamusical.Services.AlbumServic
+import com.dabellan.mibibliotecamusical.Entities.Playlist
 import com.dabellan.mibibliotecamusical.Services.PlaylistService
 import com.dabellan.mibibliotecamusical.Services.PodcastService
 import com.dabellan.mibibliotecamusical.databinding.FragmentHomeBinding
@@ -208,6 +209,10 @@ class HomeFragment : Fragment(), OnClickListener {
 
 
     override fun onClickCancion(cancionEntity: Cancion) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onClickPlaylist(playlistEntity: Playlist) {
         TODO("Not yet implemented")
     }
 

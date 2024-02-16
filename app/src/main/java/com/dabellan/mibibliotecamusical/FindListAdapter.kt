@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.dabellan.mibibliotecamusical.Entities.Cancion
 import com.dabellan.mibibliotecamusical.databinding.ItemCancionBinding
 
@@ -19,9 +21,10 @@ class FindListAdapter(private var listener: OnClickListener):
 
         val binding = ItemCancionBinding.bind(view)
 
+
         fun setListener(cancion: Cancion) {
             with(binding) {
-                root.setOnClickListener { listener.onClickCancion(cancion) }
+                //root.setOnClickListener { listener.onClickCancion(cancion) }
 
             }
         }
@@ -43,14 +46,14 @@ class FindListAdapter(private var listener: OnClickListener):
 
             with(binding) {
                 tvName.text = cancion.titulo
-                /*
-                Glide.with(context)
-                    .load(store.photoUrl)
+
+                /*Glide.with(context)
+                    .load(cancion.ruta)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .centerCrop()
-                    .into(imagePhoto)
+                    .into(imagePhoto)*/
 
-                 */
+
             }
         }
     }

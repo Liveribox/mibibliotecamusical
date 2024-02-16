@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dabellan.mibibliotecamusical.Constants.Constants
 import com.dabellan.mibibliotecamusical.Entities.Cancion
+import com.dabellan.mibibliotecamusical.Entities.Playlist
 import com.dabellan.mibibliotecamusical.Services.CancionService
 import com.dabellan.mibibliotecamusical.databinding.FragmentFindBinding
 import kotlinx.coroutines.launch
@@ -99,6 +100,10 @@ class FindFragment : Fragment(), OnClickListener {
     }
 
     override fun onClickCancion(cancionEntity: Cancion) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onClickPlaylist(playlistEntity: Playlist) {
         TODO("Not yet implemented")
     }
 
