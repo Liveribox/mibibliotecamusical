@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.dabellan.mibibliotecamusical.databinding.ItemCancionBinding
+import com.dabellan.mibibliotecamusical.Entities.Playlist
 import com.dabellan.mibibliotecamusical.databinding.ItemPlaylistBinding
 
 class PlaylistListAdapter(private var listener: OnClickListener):

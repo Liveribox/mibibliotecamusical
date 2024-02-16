@@ -1,6 +1,4 @@
-package com.dabellan.mibibliotecamusical
-
-import java.util.Date
+package com.dabellan.mibibliotecamusical.Entities
 
 data class Playlist(
     var id: Long = 0,

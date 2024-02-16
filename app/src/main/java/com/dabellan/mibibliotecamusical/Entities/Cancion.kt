@@ -1,4 +1,4 @@
-package com.dabellan.mibibliotecamusical
+package com.dabellan.mibibliotecamusical.Entities
 
 data class Cancion(
     var id: Int,

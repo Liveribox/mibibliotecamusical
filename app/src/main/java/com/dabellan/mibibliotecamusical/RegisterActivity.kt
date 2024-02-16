@@ -1,14 +1,10 @@
 package com.dabellan.mibibliotecamusical
 
-import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.lifecycleScope
-import com.dabellan.mibibliotecamusical.databinding.ActivityLoginBinding
+import com.dabellan.mibibliotecamusical.Constants.Constants
+import com.dabellan.mibibliotecamusical.Services.UserService
 import com.dabellan.mibibliotecamusical.databinding.ActivityRegisterBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +13,6 @@ import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.time.LocalDateTime
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivityRegisterBinding
