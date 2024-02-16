@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dabellan.mibibliotecamusical.Constants.Constants
 import com.dabellan.mibibliotecamusical.Entities.Cancion
+import com.dabellan.mibibliotecamusical.Services.AlbumService
 import com.dabellan.mibibliotecamusical.Services.PlaylistService
 import com.dabellan.mibibliotecamusical.Services.PodcastService
 import com.dabellan.mibibliotecamusical.databinding.FragmentHomeBinding
@@ -23,6 +24,7 @@ class HomeFragment : Fragment(), OnClickListener {
     private lateinit var mBinding: FragmentHomeBinding
     private lateinit var mPlaylistAdapter: PlaylistListAdapter
     private lateinit var mPodcastAdapter: PodcastListAdapter
+    private lateinit var mAlbumAdapter: AlbumListAdapter
     private lateinit var mLinearLayout: LinearLayoutManager
 
 
@@ -36,7 +38,7 @@ class HomeFragment : Fragment(), OnClickListener {
         }
     }
 
-    
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,6 +56,7 @@ class HomeFragment : Fragment(), OnClickListener {
 
         setupRecyclerViewPlaylist()
         setupRecyclerViewPodcast()
+        setupRecyclerViewAlbum()
     }
 
     //Obtener el recycler view de playlists
@@ -137,6 +140,54 @@ class HomeFragment : Fragment(), OnClickListener {
                 val result = service.getPodcastUsuario(id)
                 val podcast = result.body()!!
                 mPodcastAdapter.submitList(podcast)
+
+            } catch (e: Exception) {
+
+                (e as? HttpException)?.let {
+                    when(it!!.code()) {
+                        400 -> {
+                            Snackbar.make(mBinding.root,"Error 400", Snackbar.LENGTH_SHORT).show()
+                        }
+                        else ->
+
+                            Snackbar.make(mBinding.root,"Error general",Snackbar.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
+
+    //Obtener la recycler view de los albumes
+    private fun setupRecyclerViewAlbum() {
+
+        mAlbumAdapter = AlbumListAdapter(this@HomeFragment)
+        mLinearLayout = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false)
+
+        mBinding.recyclerViewAlbum.apply {
+            setHasFixedSize(true)
+            layoutManager = mLinearLayout
+            adapter = mAlbumAdapter
+        }
+
+        val value = arguments?.getString("idUser")
+
+        getAlbumUsuario(value!!.toLong())
+
+    }
+
+    private fun getAlbumUsuario(id: Long){
+        val retrofit = Retrofit.Builder()
+            .baseUrl(Constants.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val service = retrofit.create(AlbumService::class.java)
+
+        lifecycleScope.launch {
+            try {
+                val result = service.getAlbumUsuario(id)
+                val album = result.body()!!
+                mAlbumAdapter.submitList(album)
 
             } catch (e: Exception) {
 

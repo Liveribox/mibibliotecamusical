@@ -15,4 +15,6 @@ object Constants {
 
     const val PODCASTS_USER = "/usuario/{id}/podcasts"
 
+    const val ALBUMS_USER = "/usuario/{id}/album"
+
 }
