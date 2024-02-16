@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.dabellan.mibibliotecamusical.Entities.Cancion
 import com.dabellan.mibibliotecamusical.databinding.ItemCancionBinding
 
 class FindListAdapter(private var listener: OnClickListener):

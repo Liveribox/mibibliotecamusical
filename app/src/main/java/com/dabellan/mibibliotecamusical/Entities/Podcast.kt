@@ -1,4 +1,4 @@
-package com.dabellan.mibibliotecamusical
+package com.dabellan.mibibliotecamusical.Entities
 
 data class Podcast(
     var id: Long = 0,

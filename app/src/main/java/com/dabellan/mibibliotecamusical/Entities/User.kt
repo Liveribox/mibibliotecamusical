@@ -1,4 +1,4 @@
-package com.dabellan.mibibliotecamusical
+package com.dabellan.mibibliotecamusical.Entities
 
 import java.time.LocalDateTime
 import java.util.Date
