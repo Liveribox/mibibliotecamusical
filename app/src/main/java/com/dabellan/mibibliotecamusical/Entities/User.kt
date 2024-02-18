@@ -10,5 +10,6 @@ data class User (
     var email: String,
     var genero: String,
     var pais: String,
-    //var fechaNacimiento: LocalDateTime,
-    var codigoPostal: String)
+    var fechaNacimiento: Date,
+    var codigoPostal: String
+)

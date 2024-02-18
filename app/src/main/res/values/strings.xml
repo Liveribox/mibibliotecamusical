@@ -18,4 +18,11 @@
     <string name="CrearUsuario">Crear Usuario</string>
     <string name="nombreAlbum">Nombre album</string>
     <string name="playlistName">Nombre playlist</string>
+    <string name="DiaNacimiento">Dia</string>
+    <string name="MesNacimiento">Mes</string>
+    <string name="AnyoNacimiento">Anyo</string>
+    <string name="GeneroRegister">Genero</string>
+    <string name="PaisRegister">Pais</string>
+    <string name="CodigoPostalRegister">Codigo Postal</string>
+    <string name="CodigoPostal">Codigo Postal</string>
 </resources>
