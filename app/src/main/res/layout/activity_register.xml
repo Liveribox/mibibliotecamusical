@@ -26,7 +26,7 @@
         android:id="@+id/ilUserRegister"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="20dp"
         android:hint="@string/UsuarioRegister"
         app:layout_constraintTop_toBottomOf="@id/tvRegister"
         app:layout_constraintStart_toStartOf="@id/tvRegister"
@@ -76,17 +76,108 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ilFechaRegister"
+        android:id="@+id/ilGeneroRegister"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_padding_default"
-        android:hint="@string/DateRegister"
+        android:hint="@string/GeneroRegister"
         app:layout_constraintTop_toBottomOf="@id/ilEmailRegister"
         app:layout_constraintStart_toStartOf="@id/tvRegister"
         app:layout_constraintEnd_toEndOf="@id/tvRegister"
         >
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etFechaRegister"
+            android:id="@+id/etGeneroRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textUri"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ilPaisRegister"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_padding_default"
+        android:hint="@string/PaisRegister"
+        app:layout_constraintTop_toBottomOf="@id/ilGeneroRegister"
+        app:layout_constraintStart_toStartOf="@id/tvRegister"
+        app:layout_constraintEnd_toEndOf="@id/tvRegister"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPaisRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textUri"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ilCodPosRegister"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_padding_default"
+        android:hint="@string/CodigoPostal"
+        app:layout_constraintTop_toBottomOf="@id/ilPaisRegister"
+        app:layout_constraintStart_toStartOf="@id/tvRegister"
+        app:layout_constraintEnd_toEndOf="@id/tvRegister"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCodPosRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textUri"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ilFechaDiaRegister"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_padding_default"
+        android:hint="@string/DiaNacimiento"
+        app:layout_constraintTop_toBottomOf="@id/ilCodPosRegister"
+        app:layout_constraintStart_toStartOf="@id/ilCodPosRegister"
+
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etFechaMesRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textUri"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ilFechaMesRegister"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_padding_default"
+        android:hint="@string/MesNacimiento"
+        app:layout_constraintTop_toBottomOf="@id/ilCodPosRegister"
+        app:layout_constraintStart_toEndOf="@+id/ilFechaDiaRegister"
+        app:layout_constraintEnd_toStartOf="@id/ilFechaAnyoRegister"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etFechaDiaRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textUri"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ilFechaAnyoRegister"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_padding_default"
+        android:hint="@string/AnyoNacimiento"
+        app:layout_constraintTop_toBottomOf="@id/ilCodPosRegister"
+        app:layout_constraintStart_toEndOf="@+id/ilFechaMesRegister"
+        app:layout_constraintEnd_toEndOf="@id/ilCodPosRegister"
+
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etFechaAnyoRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textUri"
@@ -94,12 +185,17 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
+
+
+
+
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/CrearUsuario"
-        app:layout_constraintTop_toBottomOf="@id/ilFechaRegister"
+        app:layout_constraintTop_toBottomOf="@id/ilFechaMesRegister"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

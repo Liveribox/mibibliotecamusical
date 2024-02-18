@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import com.dabellan.mibibliotecamusical.Constants.Constants
+import com.dabellan.mibibliotecamusical.Entities.User
 import com.dabellan.mibibliotecamusical.Services.UserService
 import com.dabellan.mibibliotecamusical.databinding.ActivityRegisterBinding
 import com.google.android.material.snackbar.Snackbar
@@ -13,6 +14,8 @@ import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.time.LocalDateTime
+import java.util.Date
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivityRegisterBinding
@@ -32,6 +35,12 @@ class RegisterActivity : AppCompatActivity() {
         val user = mBinding.etUserRegister.text.toString().trim()
         val password = mBinding.etPasswordRegister.text.toString().trim()
         val email = mBinding.etEmailRegister.text.toString().trim()
+        val genero = mBinding.etGeneroRegister.text.toString().trim()
+        val pais = mBinding.etPaisRegister.text.toString().trim()
+        val codigoPostal = mBinding.etCodPosRegister.text.toString().trim()
+        val dia = mBinding.etFechaDiaRegister.text.toString().trim()
+        val mes = mBinding.etFechaMesRegister.text.toString().trim()
+        val anyo = mBinding.etFechaAnyoRegister.text.toString().trim()
 
         val retrofit = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
@@ -58,9 +67,9 @@ class RegisterActivity : AppCompatActivity() {
                             .show()
                     }
 
-                    /*val nuevoUsuario = User(user,password,email,null,null, LocalDateTime.now(),null)
+                    val nuevoUsuario = User(0,user,password,email,genero,pais, Date(anyo.toInt()-1901,mes.toInt()-1,dia.toInt()),codigoPostal)
                     service.crearUsuario(nuevoUsuario)
-                    Snackbar.make(mBinding.root,"Creando usuario",Snackbar.LENGTH_SHORT).show()*/
+                    Snackbar.make(mBinding.root,"Creando usuario",Snackbar.LENGTH_SHORT).show()
                 }
 
 
