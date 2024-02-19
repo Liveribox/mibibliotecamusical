@@ -108,7 +108,15 @@ class LibraryFragment : Fragment(), OnClickListener {
     }
 
     override fun onClickPlaylist(playlistEntity: Playlist) {
-        TODO("Not yet implemented")
+        val fragment=SongsFragment()
+
+        val fragmentTransaction = requireFragmentManager().beginTransaction()
+
+
+        fragmentTransaction.add(R.id.containerPlaylists, fragment)
+        fragmentTransaction.commit()
+        fragmentTransaction.addToBackStack(null)
+
     }
 
 

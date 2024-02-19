@@ -27,7 +27,7 @@ class LibraryListAdapter(private var listener: OnClickListener):
 
         fun setListener(playlist: Playlist) {
             with(binding) {
-                //root.setOnClickListener { listener.onClickPlaylist(playlist) }
+                root.setOnClickListener { listener.onClickPlaylist(playlist) }
 
             }
         }
