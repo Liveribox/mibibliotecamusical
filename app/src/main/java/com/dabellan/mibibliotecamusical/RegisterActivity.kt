@@ -73,7 +73,7 @@ class RegisterActivity : AppCompatActivity() {
                             .show()
                     }
 
-                    val nuevoUsuario = User(0,user,password,email,genero,pais, Date(anyo.toInt()-1901,mes.toInt()-1,dia.toInt()),codigoPostal)
+                    val nuevoUsuario = User(0,user,password,email,genero,pais, Date(anyo.toInt()-1900,mes.toInt()-1,dia.toInt()),codigoPostal)
                     service.crearUsuario(nuevoUsuario)
                     Snackbar.make(mBinding.root,"Creando usuario",Snackbar.LENGTH_SHORT).show()
                 }

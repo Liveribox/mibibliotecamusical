@@ -37,7 +37,7 @@
         <ImageView
             android:id="@+id/imgLogin"
             android:layout_width="wrap_content"
-            android:layout_height="220dp"
+            android:layout_height="@dimen/doscientosSize"
             app:layout_constraintTop_toBottomOf="@id/titleLogin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
