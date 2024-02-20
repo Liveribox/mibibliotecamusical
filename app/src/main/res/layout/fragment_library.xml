@@ -18,4 +18,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add_playlist"
+        android:contentDescription="@string/crear_playlist"
+        android:backgroundTint="@color/md_theme_light_secondary"
+        android:layout_marginBottom="@dimen/margin_fab_bottom"
+        android:layout_marginRight="@dimen/margin_right_fab"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

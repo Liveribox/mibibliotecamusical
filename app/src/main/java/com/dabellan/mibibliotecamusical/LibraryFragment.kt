@@ -40,6 +40,16 @@ class LibraryFragment : Fragment(), OnClickListener {
     ): View? {
         // Inflate the layout for this fragment
         mBinding=FragmentLibraryBinding.inflate(inflater, container, false)
+
+        mBinding.fab.setOnClickListener {
+            val fragment=NewPlaylistFragment()
+
+            val fragmentTransaction = requireFragmentManager().beginTransaction()
+            fragmentTransaction.add(R.id.containerPlaylists, fragment)
+            fragmentTransaction.commit()
+            fragmentTransaction.addToBackStack(null)
+            hideFab(false)
+        }
         return mBinding.root
     }
 
@@ -67,9 +77,6 @@ class LibraryFragment : Fragment(), OnClickListener {
         val value = arguments?.getString("idUser")
 
         getPlaylist(value!!.toLong())
-
-
-
     }
 
     private fun getPlaylist(id: Long){
@@ -103,6 +110,10 @@ class LibraryFragment : Fragment(), OnClickListener {
         }
     }
 
+    fun hideFab(isVisible: Boolean = true) {
+        if (isVisible) mBinding.fab.show() else mBinding.fab.hide()
+    }
+
     override fun onClickCancion(cancionEntity: Cancion) {
         TODO("Not yet implemented")
     }
@@ -119,11 +130,7 @@ class LibraryFragment : Fragment(), OnClickListener {
         fragmentTransaction.add(R.id.containerPlaylists, fragment)
         fragmentTransaction.commit()
         fragmentTransaction.addToBackStack(null)
-
+        hideFab(false)
 
     }
-
-
-
-
 }
