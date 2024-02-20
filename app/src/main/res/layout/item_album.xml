@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/imgPlaylist"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/cien"
+            android:layout_height="@dimen/cien"
             android:layout_marginTop="@dimen/common_margin_min"
             android:layout_marginStart="@dimen/common_margin_min"
             app:layout_constraintTop_toTopOf="parent"

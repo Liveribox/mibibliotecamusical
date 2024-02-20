@@ -27,4 +27,5 @@
     <dimen name="doscientosSize">200dp</dimen>
     <dimen name="trescientosSize">300dp</dimen>
     <dimen name="sesentaSize">60dp</dimen>
+    <dimen name="veinteSize">20dp</dimen>
 </resources>
