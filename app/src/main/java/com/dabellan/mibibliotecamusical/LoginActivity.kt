@@ -78,10 +78,11 @@ class LoginActivity : AppCompatActivity() {
                     Log.i("Constraseña Encontrada","$password")
 
                     val intent = Intent(this, MainActivity::class.java)
+                    UsuarioApplication.usuario=userr
                     intent.putExtra("idUser", userr.id.toString())
                     startActivity(intent)
                 }
-                }
+            }
 
 
 

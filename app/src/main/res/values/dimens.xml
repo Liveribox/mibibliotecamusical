@@ -9,4 +9,8 @@
     <dimen name="imagen_dimension">70dp</dimen>
     <dimen name="text_title_cancion">20sp</dimen>
     <dimen name="menu_icon_size">35dp</dimen>
+    <dimen name="margin_fab_bottom">100dp</dimen>
+    <dimen name="margin_right_fab">20dp</dimen>
+    <dimen name="min_layout_height">30dp</dimen>
+    <dimen name="text_size_normal">16sp</dimen>
 </resources>
