@@ -28,7 +28,6 @@ class HomeFragment : Fragment(), OnClickListener {
     private lateinit var mAlbumAdapter: AlbumListAdapter
     private lateinit var mLinearLayout: LinearLayoutManager
 
-
     companion object {
         fun newInstance(value: String): HomeFragment {
             val fragment = HomeFragment()

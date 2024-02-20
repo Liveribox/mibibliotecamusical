@@ -4,12 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
 import com.dabellan.mibibliotecamusical.Constants.Constants
 import com.dabellan.mibibliotecamusical.Entities.User
 import com.dabellan.mibibliotecamusical.Services.UserService
 import com.dabellan.mibibliotecamusical.databinding.ActivityLoginBinding
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -33,6 +35,8 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
+
+
     }
 
     private fun login(){
@@ -59,10 +63,13 @@ class LoginActivity : AppCompatActivity() {
                 (e as? HttpException)?.let {
                     when(it!!.code()) {
                         400 -> {
-                            Snackbar.make(mBinding.root,"Error",Snackbar.LENGTH_SHORT).show()
+                            Snackbar.make(mBinding.root,"Error 400",Snackbar.LENGTH_SHORT).show()
+                        }
+                        500 ->{
+                            Snackbar.make(mBinding.root,"Error 500",Snackbar.LENGTH_SHORT).show()
                         }
                         else ->
-                            Snackbar.make(mBinding.root,"Error",Snackbar.LENGTH_SHORT).show()
+                            Snackbar.make(mBinding.root,"Error general",Snackbar.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -91,4 +98,6 @@ class LoginActivity : AppCompatActivity() {
 
         }
     }
+
+
 }
