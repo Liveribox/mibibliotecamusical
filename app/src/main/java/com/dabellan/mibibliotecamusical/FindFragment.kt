@@ -24,7 +24,7 @@ class FindFragment : Fragment(), OnClickListener {
     private lateinit var mBinding: FragmentFindBinding
     private lateinit var mFindAdapter: FindListAdapter
     private lateinit var mLinearLayout: LinearLayoutManager
-    private lateinit var listaCanciones: List<Cancion>
+    private lateinit var listaCanciones: MutableList<Cancion>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,14 +39,13 @@ class FindFragment : Fragment(), OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mBinding.etBuscador.addTextChangedListener {
-            var filtrador = mBinding.etBuscador.text.toString()
-            buscarCanciones(filtrador)
-        }
-
-
         // llamas a setupRecyclerView()
         setupRecyclerView()
+
+        mBinding.etBuscador.addTextChangedListener {filtracion ->
+            Log.i("XXXXX",filtracion.toString())
+            buscarCanciones(filtracion.toString().trim())
+        }
     }
 
     private fun setupRecyclerView() {
@@ -106,13 +105,14 @@ class FindFragment : Fragment(), OnClickListener {
             }
         }
     }
-
+    
     private fun buscarCanciones(cancionesTexto : String){
         if(::listaCanciones.isInitialized){
-            val filtrarCanciones = listaCanciones.filter { cancionn ->
+            var filtrarCanciones = listaCanciones.filter { cancionn ->
                 cancionn.titulo.contains(cancionesTexto, ignoreCase = true)
             }
-            mFindAdapter.submitList(filtrarCanciones);
+            mFindAdapter.submitList(filtrarCanciones)
+
         }
     }
 

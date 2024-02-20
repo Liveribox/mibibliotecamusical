@@ -90,9 +90,6 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
-
-
-
             else{
                 Snackbar.make(mBinding.root,"Usuario Incorrecto",Snackbar.LENGTH_SHORT).show()
             }
