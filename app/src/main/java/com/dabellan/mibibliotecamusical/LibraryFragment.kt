@@ -112,12 +112,18 @@ class LibraryFragment : Fragment(), OnClickListener {
 
         val fragmentTransaction = requireFragmentManager().beginTransaction()
 
+        val args = Bundle()
+        args.putString("idPlaylist", playlistEntity.id.toString())
+        fragment.arguments = args
 
         fragmentTransaction.add(R.id.containerPlaylists, fragment)
         fragmentTransaction.commit()
         fragmentTransaction.addToBackStack(null)
 
+
     }
+
+
 
 
 }

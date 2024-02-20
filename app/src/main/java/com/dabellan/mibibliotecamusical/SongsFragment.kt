@@ -25,15 +25,6 @@ class SongsFragment : Fragment(), OnClickListener {
     private lateinit var mSongsListAdapter: FindListAdapter
     private lateinit var mLinearLayout: LinearLayoutManager
 
-    companion object {
-        fun newInstance(value: String): SongsFragment {
-            val fragment = SongsFragment()
-            val args = Bundle()
-            args.putString("idPlaylist", value)
-            fragment.arguments = args
-            return fragment
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,9 +54,7 @@ class SongsFragment : Fragment(), OnClickListener {
             layoutManager = mLinearLayout
             adapter = mSongsListAdapter
         }
-
         val value = arguments?.getString("idPlaylist")
-
         getCanciones(value!!.toLong())
 
     }
@@ -110,6 +99,8 @@ class SongsFragment : Fragment(), OnClickListener {
 
     override fun onClickPlaylist(playlistEntity: Playlist) {
         TODO("Not yet implemented")
+        /*val value = arguments?.getString("idPlaylist")
+        getCanciones(value!!.toLong())*/
     }
 
 
