@@ -22,4 +22,9 @@
     <dimen name="cien">100dp</dimen>
     <dimen name="margin_peque">16sp</dimen>
     <dimen name="text_peque">16sp</dimen>
+    <dimen name="common_padding_tinny">4dp</dimen>
+    <dimen name="treintaSize">30sp</dimen>
+    <dimen name="doscientosSize">200dp</dimen>
+    <dimen name="trescientosSize">300dp</dimen>
+    <dimen name="sesentaSize">60dp</dimen>
 </resources>

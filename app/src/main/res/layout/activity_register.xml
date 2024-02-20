@@ -24,7 +24,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ilUserRegister"
-        android:layout_width="300dp"
+        android:layout_width="@dimen/trescientosSize"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:hint="@string/UsuarioRegister"
@@ -42,7 +42,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ilPasswordRegister"
-        android:layout_width="300dp"
+        android:layout_width="@dimen/trescientosSize"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_padding_default"
         android:hint="@string/ContrasenyaLogin"
@@ -59,7 +59,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ilEmailRegister"
-        android:layout_width="300dp"
+        android:layout_width="@dimen/trescientosSize"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_padding_default"
         android:hint="@string/EmailRegister"
@@ -77,7 +77,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ilGeneroRegister"
-        android:layout_width="300dp"
+        android:layout_width="@dimen/trescientosSize"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_padding_default"
         android:hint="@string/GeneroRegister"
@@ -95,7 +95,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ilPaisRegister"
-        android:layout_width="300dp"
+        android:layout_width="@dimen/trescientosSize"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_padding_default"
         android:hint="@string/PaisRegister"
@@ -113,7 +113,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ilCodPosRegister"
-        android:layout_width="300dp"
+        android:layout_width="@dimen/trescientosSize"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_padding_default"
         android:hint="@string/CodigoPostal"
@@ -131,7 +131,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ilFechaDiaRegister"
-        android:layout_width="60dp"
+        android:layout_width="@dimen/sesentaSize"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_padding_default"
         android:hint="@string/DiaNacimiento"
@@ -149,7 +149,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ilFechaMesRegister"
-        android:layout_width="60dp"
+        android:layout_width="@dimen/sesentaSize"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_padding_default"
         android:hint="@string/MesNacimiento"
@@ -167,7 +167,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ilFechaAnyoRegister"
-        android:layout_width="60dp"
+        android:layout_width="@dimen/sesentaSize"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_padding_default"
         android:hint="@string/AnyoNacimiento"
@@ -192,7 +192,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRegister"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/trescientosSize"
         android:layout_height="wrap_content"
         android:text="@string/CrearUsuario"
         app:layout_constraintTop_toBottomOf="@id/ilFechaMesRegister"
