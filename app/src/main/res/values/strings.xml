@@ -35,4 +35,11 @@
     <string name="num_songs_hint">Número de canciones</string>
     <string name="date_hint">Fecha de creación</string>
     <string name="nombre_podcast">Nombre podcast</string>
+    <string name="patrocinadoAlbum">Patrocinado</string>
+    <string name="playlistDuracion">Duracion</string>
+    <string name="playlistCanciones">Canciones:</string>
+    <string name="playlistCancionesNumero">9</string>
+    <string name="tvPlaylistTitulo">Playlist</string>
+    <string name="tvPodcastTitulo">Podcast</string>
+    <string name="tvAlbumTitulo">Album</string>
 </resources>

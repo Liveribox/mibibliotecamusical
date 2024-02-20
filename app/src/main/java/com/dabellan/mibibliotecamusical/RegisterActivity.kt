@@ -42,6 +42,12 @@ class RegisterActivity : AppCompatActivity() {
         val mes = mBinding.etFechaMesRegister.text.toString().trim()
         val anyo = mBinding.etFechaAnyoRegister.text.toString().trim()
 
+        if(user.isEmpty() || password.isEmpty() || email.isEmpty() || genero.isEmpty() || pais.isEmpty() || codigoPostal.isEmpty() || dia.isEmpty() || mes.isEmpty() || dia.isEmpty()){
+            Snackbar.make(mBinding.root, "Campos incompletos", Snackbar.LENGTH_SHORT).show()
+            return
+        }
+
+
         val retrofit = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

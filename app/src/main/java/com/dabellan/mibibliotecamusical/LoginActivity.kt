@@ -43,6 +43,11 @@ class LoginActivity : AppCompatActivity() {
         val user = mBinding.etUserLogin.text.toString().trim()
         val password = mBinding.etPasswordLogin.text.toString().trim()
 
+        if(user.isEmpty() || password.isEmpty()){
+            Snackbar.make(mBinding.root,"Campos incompletos",Snackbar.LENGTH_SHORT).show()
+            return
+        }
+
         val retrofit = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

@@ -1,28 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginEnd="@dimen/text_size_normal"
+    android:layout_marginStart="@dimen/common_padding_default"
+    >
 
-    <ImageView
-        android:id="@+id/imgPodcast"
-        android:layout_width="@dimen/cien"
-        android:layout_height="@dimen/cien"
-        android:layout_marginTop="@dimen/margin_peque"
-        android:layout_marginStart="@dimen/margin_peque"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ic_podcast"
-        />
-
-    <TextView
-        android:id="@+id/tvPodcastName"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/imgPodcast"
-        app:layout_constraintStart_toStartOf="@id/imgPodcast"
-        android:text="@string/nombre_podcast"
-        android:textSize="@dimen/margin_peque"
-        />
+        android:background="@color/seed"
+        >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/imgPodcast"
+            android:layout_width="@dimen/cien"
+            android:layout_height="@dimen/cien"
+            android:layout_marginTop="@dimen/margin_peque"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_podcast"
+            />
+
+        <TextView
+            android:id="@+id/tvPodcastName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/imgPodcast"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/nombre_podcast"
+            android:textSize="@dimen/margin_peque"
+            android:layout_marginEnd="@dimen/common_padding_default"
+            android:layout_marginStart="@dimen/common_padding_default"
+            android:textColor="@color/md_theme_light_scrim"
+            android:background="@color/seed"
+            android:textStyle="italic|bold"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
