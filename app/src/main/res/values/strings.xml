@@ -25,6 +25,9 @@
     <string name="PaisRegister">Pais</string>
     <string name="CodigoPostalRegister">Codigo Postal</string>
     <string name="CodigoPostal">Codigo Postal</string>
+    <string name="helper_required">Rellena los campos</string>
+    <string name="edit_store_message_valid">Valores validos</string>
+    <string name="BuscadorFind">Busca una cancion</string>
     <string name="crear_playlist">Crear playlist</string>
     <string name="string_creator">Nueva Playlist</string>
     <string name="btn_text_save">Guardar playlist</string>

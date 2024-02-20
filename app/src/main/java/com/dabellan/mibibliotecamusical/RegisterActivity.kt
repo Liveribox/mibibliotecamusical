@@ -77,10 +77,13 @@ class RegisterActivity : AppCompatActivity() {
                 (e as? HttpException)?.let {
                     when (it!!.code()) {
                         400 -> {
-                            Snackbar.make(mBinding.root, "No existe usuario", Snackbar.LENGTH_SHORT)
+                            Snackbar.make(mBinding.root, "Error 400", Snackbar.LENGTH_SHORT)
                                 .show()
                         }
-
+                        500 ->{
+                            Snackbar.make(mBinding.root, "Error 500", Snackbar.LENGTH_SHORT)
+                                .show()
+                        }
                         else ->
                             Snackbar.make(mBinding.root, "No existe usuario", Snackbar.LENGTH_SHORT)
                                 .show()

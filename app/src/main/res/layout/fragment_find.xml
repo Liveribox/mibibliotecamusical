@@ -4,20 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/seed"
     tools:context=".FindFragment">
 
-    <TextView
-        android:id="@+id/busqueda"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ilBuscador"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="generic"
+        android:layout_height="wrap_content"
+        android:hint="@string/BuscadorFind"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/recyclerView"
         >
-
-    </TextView>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBuscador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textUri"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -26,7 +31,7 @@
         tools:listitem="@layout/item_cancion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ilBuscador"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
