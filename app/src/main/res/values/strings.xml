@@ -34,4 +34,5 @@
     <string name="title_hint">Título de la playlist</string>
     <string name="num_songs_hint">Número de canciones</string>
     <string name="date_hint">Fecha de creación</string>
+    <string name="nombre_podcast">Nombre podcast</string>
 </resources>

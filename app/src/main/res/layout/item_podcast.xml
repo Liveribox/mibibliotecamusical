@@ -6,10 +6,10 @@
 
     <ImageView
         android:id="@+id/imgPodcast"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="@dimen/cien"
+        android:layout_height="@dimen/cien"
+        android:layout_marginTop="@dimen/margin_peque"
+        android:layout_marginStart="@dimen/margin_peque"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:src="@drawable/ic_podcast"
@@ -21,8 +21,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/imgPodcast"
         app:layout_constraintStart_toStartOf="@id/imgPodcast"
-        android:text="Nombre podcast"
-        android:textSize="16dp"
+        android:text="@string/nombre_podcast"
+        android:textSize="@dimen/margin_peque"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

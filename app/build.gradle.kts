@@ -46,6 +46,7 @@ dependencies {
     val livedataVersion = "2.4.0"
     val retrofitVersion = "2.9.0"
     val lifecycleruntimektxVersion = "2.5.1"
+    val navVersion = "2.7.5"
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -76,4 +77,8 @@ dependencies {
 
     // Lifecycle Runtime
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleruntimektxVersion")
+
+    //NavigationComponent
+    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 }

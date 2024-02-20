@@ -13,4 +13,13 @@
     <dimen name="margin_right_fab">20dp</dimen>
     <dimen name="min_layout_height">30dp</dimen>
     <dimen name="text_size_normal">16sp</dimen>
+    <dimen name="margin_min">20dp</dimen>
+    <dimen name="margin_max">300dp</dimen>
+    <dimen name="margin_mid">100dp</dimen>
+    <dimen name="beeg_width">300dp</dimen>
+    <dimen name="width_nice">220dp</dimen>
+    <dimen name="margin_min_mid">50dp</dimen>
+    <dimen name="cien">100dp</dimen>
+    <dimen name="margin_peque">16sp</dimen>
+    <dimen name="text_peque">16sp</dimen>
 </resources>

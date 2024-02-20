@@ -6,10 +6,10 @@
 
     <ImageView
         android:id="@+id/imgPlaylist"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="@dimen/cien"
+        android:layout_height="@dimen/cien"
+        android:layout_marginTop="@dimen/margin_peque"
+        android:layout_marginStart="@dimen/margin_peque"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:src="@drawable/ic_library"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toBottomOf="@id/imgPlaylist"
         app:layout_constraintStart_toStartOf="@id/imgPlaylist"
         android:text="@string/playlistName"
-        android:textSize="16sp"
+        android:textSize="@dimen/text_peque"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
