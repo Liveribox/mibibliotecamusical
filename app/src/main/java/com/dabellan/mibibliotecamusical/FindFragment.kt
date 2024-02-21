@@ -63,16 +63,6 @@ class FindFragment : Fragment(), OnClickListener {
 
         getCanciones()
 
-
-        /*
-        mFindAdapter = FindListAdapter(mutableListOf(), this)
-        mGridLayout = GridLayoutManager(this, 1)
-
-        mBinding.recyclerView.apply {
-            setHasFixedSize(true)
-            layoutManager = mGridLayout
-            adapter = mFindAdapter
-        }*/
     }
 
     private fun getCanciones(){
@@ -87,6 +77,7 @@ class FindFragment : Fragment(), OnClickListener {
             try {
                 val result = service.getCanciones()
                 val canciones = result.body()!!
+                listaCanciones = canciones.toMutableList()
                 mFindAdapter.submitList(canciones)
 
             } catch (e: Exception) {
