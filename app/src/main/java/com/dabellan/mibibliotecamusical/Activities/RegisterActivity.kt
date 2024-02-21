@@ -1,4 +1,4 @@
-package com.dabellan.mibibliotecamusical
+package com.dabellan.mibibliotecamusical.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,7 +14,6 @@ import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.time.LocalDateTime
 import java.util.Date
 
 class RegisterActivity : AppCompatActivity() {

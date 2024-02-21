@@ -1,9 +1,12 @@
-package com.dabellan.mibibliotecamusical
+package com.dabellan.mibibliotecamusical.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
+import com.dabellan.mibibliotecamusical.Fragments.FindFragment
+import com.dabellan.mibibliotecamusical.Fragments.HomeFragment
+import com.dabellan.mibibliotecamusical.Fragments.LibraryFragment
+import com.dabellan.mibibliotecamusical.R
 import com.dabellan.mibibliotecamusical.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

@@ -1,55 +1,40 @@
-package com.dabellan.mibibliotecamusical
+package com.dabellan.mibibliotecamusical.Fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dabellan.mibibliotecamusical.Adapters.FindListAdapter
 import com.dabellan.mibibliotecamusical.Constants.Constants
 import com.dabellan.mibibliotecamusical.Entities.Cancion
 import com.dabellan.mibibliotecamusical.Entities.Playlist
+import com.dabellan.mibibliotecamusical.OnClickListener
 import com.dabellan.mibibliotecamusical.Services.CancionService
-import com.dabellan.mibibliotecamusical.Services.PlaylistService
 import com.dabellan.mibibliotecamusical.databinding.FragmentFindBinding
-import com.dabellan.mibibliotecamusical.databinding.FragmentLibraryBinding
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class LibraryFragment : Fragment(), OnClickListener {
-    private lateinit var mBinding: FragmentLibraryBinding
-    private lateinit var mLibraryListAdapter: LibraryListAdapter
-    private lateinit var mLinearLayout: LinearLayoutManager
 
-    companion object {
-        fun newInstance(value: String): LibraryFragment {
-            val fragment = LibraryFragment()
-            val args = Bundle()
-            args.putString("idUser", value)
-            fragment.arguments = args
-            return fragment
-        }
-    }
+class FindFragment : Fragment(), OnClickListener {
+    private lateinit var mBinding: FragmentFindBinding
+    private lateinit var mFindAdapter: FindListAdapter
+    private lateinit var mLinearLayout: LinearLayoutManager
+    private lateinit var listaCanciones: MutableList<Cancion>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        mBinding=FragmentLibraryBinding.inflate(inflater, container, false)
+        mBinding=FragmentFindBinding.inflate(inflater, container, false)
 
-        mBinding.fab.setOnClickListener {
-            val fragment=NewPlaylistFragment()
-
-            val fragmentTransaction = requireFragmentManager().beginTransaction()
-            fragmentTransaction.add(R.id.containerPlaylists, fragment)
-            fragmentTransaction.commit()
-            fragmentTransaction.addToBackStack(null)
-            hideFab(false)
-        }
         return mBinding.root
     }
 
@@ -58,40 +43,44 @@ class LibraryFragment : Fragment(), OnClickListener {
 
         // llamas a setupRecyclerView()
         setupRecyclerView()
-    }
 
+        mBinding.etBuscador.addTextChangedListener {filtracion ->
+            Log.i("XXXXX",filtracion.toString())
+            buscarCanciones(filtracion.toString().trim())
+        }
+    }
 
     private fun setupRecyclerView() {
         // despues del setup llamas a la funcion de corrutina que te carga los datos
         // en recycler
 
-        mLibraryListAdapter = LibraryListAdapter(this@LibraryFragment)
+        mFindAdapter = FindListAdapter(this@FindFragment)
         mLinearLayout = LinearLayoutManager(requireContext())
 
         mBinding.recyclerView.apply {
             setHasFixedSize(true)
             layoutManager = mLinearLayout
-            adapter = mLibraryListAdapter
+            adapter = mFindAdapter
         }
 
-        val value = arguments?.getString("idUser")
+        getCanciones()
 
-        getPlaylist(value!!.toLong())
     }
 
-    private fun getPlaylist(id: Long){
+    private fun getCanciones(){
         val retrofit = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val service = retrofit.create(PlaylistService::class.java)
+        val service = retrofit.create(CancionService::class.java)
 
         lifecycleScope.launch {
             try {
-                val result = service.getPlaylistUsuario(id)
-                val playlists = result.body()!!
-                mLibraryListAdapter.submitList(playlists)
+                val result = service.getCanciones()
+                val canciones = result.body()!!
+                listaCanciones = canciones.toMutableList()
+                mFindAdapter.submitList(canciones)
 
             } catch (e: Exception) {
 
@@ -109,9 +98,15 @@ class LibraryFragment : Fragment(), OnClickListener {
             }
         }
     }
+    
+    private fun buscarCanciones(cancionesTexto : String){
+        if(::listaCanciones.isInitialized){
+            var filtrarCanciones = listaCanciones.filter { cancionn ->
+                cancionn.titulo.contains(cancionesTexto, ignoreCase = true)
+            }
+            mFindAdapter.submitList(filtrarCanciones)
 
-    fun hideFab(isVisible: Boolean = true) {
-        if (isVisible) mBinding.fab.show() else mBinding.fab.hide()
+        }
     }
 
     override fun onClickCancion(cancionEntity: Cancion) {
@@ -119,18 +114,8 @@ class LibraryFragment : Fragment(), OnClickListener {
     }
 
     override fun onClickPlaylist(playlistEntity: Playlist) {
-        val fragment=SongsFragment()
-
-        val fragmentTransaction = requireFragmentManager().beginTransaction()
-
-        val args = Bundle()
-        args.putString("idPlaylist", playlistEntity.id.toString())
-        fragment.arguments = args
-
-        fragmentTransaction.add(R.id.containerPlaylists, fragment)
-        fragmentTransaction.commit()
-        fragmentTransaction.addToBackStack(null)
-        hideFab(false)
-
+        TODO("Not yet implemented")
     }
+
+
 }

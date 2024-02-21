@@ -1,4 +1,4 @@
-package com.dabellan.mibibliotecamusical
+package com.dabellan.mibibliotecamusical.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,10 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dabellan.mibibliotecamusical.Adapters.AlbumListAdapter
+import com.dabellan.mibibliotecamusical.Adapters.PlaylistListAdapter
+import com.dabellan.mibibliotecamusical.Adapters.PodcastListAdapter
 import com.dabellan.mibibliotecamusical.Constants.Constants
 import com.dabellan.mibibliotecamusical.Entities.Cancion
 import com.dabellan.mibibliotecamusical.Services.AlbumService
 import com.dabellan.mibibliotecamusical.Entities.Playlist
+import com.dabellan.mibibliotecamusical.OnClickListener
 import com.dabellan.mibibliotecamusical.Services.PlaylistService
 import com.dabellan.mibibliotecamusical.Services.PodcastService
 import com.dabellan.mibibliotecamusical.databinding.FragmentHomeBinding

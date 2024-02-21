@@ -1,38 +1,37 @@
-package com.dabellan.mibibliotecamusical
+package com.dabellan.mibibliotecamusical.Fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dabellan.mibibliotecamusical.Adapters.FindListAdapter
 import com.dabellan.mibibliotecamusical.Constants.Constants
 import com.dabellan.mibibliotecamusical.Entities.Cancion
 import com.dabellan.mibibliotecamusical.Entities.Playlist
-import com.dabellan.mibibliotecamusical.Services.CancionService
-import com.dabellan.mibibliotecamusical.databinding.FragmentFindBinding
+import com.dabellan.mibibliotecamusical.OnClickListener
+import com.dabellan.mibibliotecamusical.Services.CancionPlaylistService
+import com.dabellan.mibibliotecamusical.databinding.FragmentSongsBinding
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-class FindFragment : Fragment(), OnClickListener {
-    private lateinit var mBinding: FragmentFindBinding
-    private lateinit var mFindAdapter: FindListAdapter
+class SongsFragment : Fragment(), OnClickListener {
+    private lateinit var mBinding: FragmentSongsBinding
+    private lateinit var mSongsListAdapter: FindListAdapter
     private lateinit var mLinearLayout: LinearLayoutManager
-    private lateinit var listaCanciones: MutableList<Cancion>
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        mBinding=FragmentFindBinding.inflate(inflater, container, false)
-
+        mBinding=FragmentSongsBinding.inflate(inflater, container, false)
         return mBinding.root
     }
 
@@ -41,44 +40,38 @@ class FindFragment : Fragment(), OnClickListener {
 
         // llamas a setupRecyclerView()
         setupRecyclerView()
-
-        mBinding.etBuscador.addTextChangedListener {filtracion ->
-            Log.i("XXXXX",filtracion.toString())
-            buscarCanciones(filtracion.toString().trim())
-        }
     }
 
     private fun setupRecyclerView() {
         // despues del setup llamas a la funcion de corrutina que te carga los datos
         // en recycler
 
-        mFindAdapter = FindListAdapter(this@FindFragment)
+        mSongsListAdapter = FindListAdapter(this@SongsFragment)
         mLinearLayout = LinearLayoutManager(requireContext())
 
         mBinding.recyclerView.apply {
             setHasFixedSize(true)
             layoutManager = mLinearLayout
-            adapter = mFindAdapter
+            adapter = mSongsListAdapter
         }
-
-        getCanciones()
+        val value = arguments?.getString("idPlaylist")
+        getCanciones(value!!.toLong())
 
     }
 
-    private fun getCanciones(){
+    private fun getCanciones(id: Long){
         val retrofit = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val service = retrofit.create(CancionService::class.java)
+        val service = retrofit.create(CancionPlaylistService::class.java)
 
         lifecycleScope.launch {
             try {
-                val result = service.getCanciones()
+                val result = service.getCancionesPlaylist(id)
                 val canciones = result.body()!!
-                listaCanciones = canciones.toMutableList()
-                mFindAdapter.submitList(canciones)
+                mSongsListAdapter.submitList(canciones)
 
             } catch (e: Exception) {
 
@@ -96,16 +89,9 @@ class FindFragment : Fragment(), OnClickListener {
             }
         }
     }
-    
-    private fun buscarCanciones(cancionesTexto : String){
-        if(::listaCanciones.isInitialized){
-            var filtrarCanciones = listaCanciones.filter { cancionn ->
-                cancionn.titulo.contains(cancionesTexto, ignoreCase = true)
-            }
-            mFindAdapter.submitList(filtrarCanciones)
 
-        }
-    }
+
+
 
     override fun onClickCancion(cancionEntity: Cancion) {
         TODO("Not yet implemented")
@@ -113,6 +99,8 @@ class FindFragment : Fragment(), OnClickListener {
 
     override fun onClickPlaylist(playlistEntity: Playlist) {
         TODO("Not yet implemented")
+        /*val value = arguments?.getString("idPlaylist")
+        getCanciones(value!!.toLong())*/
     }
 
 

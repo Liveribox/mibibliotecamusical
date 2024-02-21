@@ -1,4 +1,4 @@
-package com.dabellan.mibibliotecamusical
+package com.dabellan.mibibliotecamusical.Adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,10 +8,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.dabellan.mibibliotecamusical.Entities.Podcast
+import com.dabellan.mibibliotecamusical.OnClickListener
+import com.dabellan.mibibliotecamusical.R
 import com.dabellan.mibibliotecamusical.databinding.ItemPodcastBinding
 
 class PodcastListAdapter(private var listener: OnClickListener):
-    ListAdapter<Podcast, RecyclerView.ViewHolder>(PodcastListAdapter.PodcastDiffCallback()) {
+    ListAdapter<Podcast, RecyclerView.ViewHolder>(PodcastDiffCallback()) {
 
     private lateinit var context: Context
 
@@ -27,7 +29,7 @@ class PodcastListAdapter(private var listener: OnClickListener):
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PodcastListAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         context = parent.context
 
         val view = LayoutInflater.from(context).inflate(R.layout.item_podcast, parent, false)
@@ -38,7 +40,7 @@ class PodcastListAdapter(private var listener: OnClickListener):
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val podcast = getItem(position)
 
-        with(holder as PodcastListAdapter.ViewHolder) {
+        with(holder as ViewHolder) {
             setListener(podcast)
 
             with(binding) {

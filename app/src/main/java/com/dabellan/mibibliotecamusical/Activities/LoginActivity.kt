@@ -1,17 +1,16 @@
-package com.dabellan.mibibliotecamusical
+package com.dabellan.mibibliotecamusical.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
 import com.dabellan.mibibliotecamusical.Constants.Constants
 import com.dabellan.mibibliotecamusical.Entities.User
 import com.dabellan.mibibliotecamusical.Services.UserService
+import com.dabellan.mibibliotecamusical.UsuarioApplication
 import com.dabellan.mibibliotecamusical.databinding.ActivityLoginBinding
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -90,7 +89,7 @@ class LoginActivity : AppCompatActivity() {
                     Log.i("Constraseña Encontrada","$password")
 
                     val intent = Intent(this, MainActivity::class.java)
-                    UsuarioApplication.usuario=userr
+                    UsuarioApplication.usuario =userr
                     intent.putExtra("idUser", userr.id.toString())
                     startActivity(intent)
                 }
